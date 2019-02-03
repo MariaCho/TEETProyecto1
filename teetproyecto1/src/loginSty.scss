@@ -17,6 +17,15 @@ $blue_theme: #70a1ff;
     flex-direction: column;
 }
 
+.rootaux-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 760%;
+}
+
+
 .box-controller {
     visibility: visible;
     display: -webkit-box;
@@ -75,7 +84,7 @@ $blue_theme: #70a1ff;
     border-bottom: 2px solid $blue_theme;
 }
 
-.box {
+.box { 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,6 +135,20 @@ $blue_theme: #70a1ff;
     color: rgba(15, 15, 15, 0.4);
 }
 
+.logout-btn {
+    padding: 2px 30px;
+    border: 0;
+    font-size: 18px;
+    border-radius: 3px;
+    font-family: Oxygen, sans-serif;
+    background-color: rgba(15, 15, 15, 0.03);
+    margin-left: 740%;
+    border: 2px solid #417cef;
+    transition: background-color 0.3s ease-out;
+    margin-left: 740%;
+    cursor: pointer;
+    
+}
 .login-btn {
     padding: 2px 30px;
     /* background-color: #417cef; */
