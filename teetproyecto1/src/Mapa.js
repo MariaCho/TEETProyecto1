@@ -152,5 +152,5 @@ class Mapa extends Component {
 
 //export default App;
 export default GoogleApiWrapper({
-  apiKey: ("AIzaSyAoE7WtbUZw9ErOHlWpz__awRz5_YuS7X4")
+  apiKey: ("")
 })(Mapa)
