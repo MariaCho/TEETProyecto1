@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import axios from "axios";
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './loginSty.scss';
 import fire from './config/Fire';
 
