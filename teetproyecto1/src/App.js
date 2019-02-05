@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './loginSty.scss';
+import './loginSty.css';
 import fire from './config/Fire';
 import LoginBox from './LoginBox.js';
 import Mapa from './Mapa.js';
@@ -32,7 +32,7 @@ class App extends Component {
 
   render() {  
     return (
-      <div className="root-container">{this.state.user? ( <Mapa/>) : (<LoginBox />)}</div>
+      <div>{this.state.user? ( <Mapa/>) : (<LoginBox />)}</div>
     );
   }
 }

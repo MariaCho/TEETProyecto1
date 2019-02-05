@@ -1,6 +1,6 @@
 import React, {  } from 'react';
 import fire from './config/Fire';
-import './loginSty.scss';
+import './loginSty.css';
 class LoginBox extends React.Component {
 
     constructor(props) {
@@ -50,21 +50,23 @@ class LoginBox extends React.Component {
   
     render() {
       return (
-        <div className="inner-container">
-          <div className="header">
-            GPS Tracking service
-          </div>
-          <div className="box">
-            <div className="input-group">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" className="login-input" placeholder="Email" onChange={this.onEmailChange.bind(this)}/>
+        <div className="root-container">
+          <div className="inner-container">
+            <div className="header">
+              GPS Tracking service
             </div>
-            <div className="input-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" className="login-input" placeholder="Password" onChange={this.onPasswordChange.bind(this)}/>
+            <div className="box">
+              <div className="input-group">
+                <label htmlFor="email">Email</label>
+                <input type="text" name="email" className="login-input" placeholder="Email" onChange={this.onEmailChange.bind(this)}/>
+              </div>
+              <div className="input-group">
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" className="login-input" placeholder="Password" onChange={this.onPasswordChange.bind(this)}/>
+              </div>
+              <button type="button" className="login-btn" onClick={this.submitRegister.bind(this)}>Register</button>
+              <button type="button" className="login-btn" onClick={this.submitLogin.bind(this)}>Login</button>
             </div>
-            <button type="button" className="login-btn" onClick={this.submitRegister.bind(this)}>Register</button>
-            <button type="button" className="login-btn" onClick={this.submitLogin.bind(this)}>Login</button>
           </div>
         </div>
       );
