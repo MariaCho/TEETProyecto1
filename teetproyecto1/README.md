@@ -1,68 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with Create React App.
 
-## Available Scripts
+## Proyecto 1 de la materia Topicos Especiales en Telematica
 
-In the project directory, you can run:
+### Enunciado
+Se requiere el desarrollo de una aplicación de registro de posición (tracking-gps) en tiempo real (tipo IoT) utilizando un framework web moderno (javascript, angular, nodejs, o ruby, django-python, etc), utilizando mejores prácticas DevOps para integración y entrega continua distinguiendo los diferentes ambientes.
 
-### `npm start`
+### Ambientes Utilizados
+#### Desarrollo
+#### Pruebas (DCA IP Privada y Docker con dominio correspondiente)
+#### Produccion (Maquina CentOs7 de AWS)
+#### Implemetacion
+#### 1. Log-in y Sign-in
+Para la parte de autenticacion del usuario se uso Google Firebase ya que era la manera mas rapida y facil de conectar al framework del proyecto (React.js)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+##### 2. Mapa y Tracking
+Para la parte del tracking se uso una API de Google Maps y unas funciones en el framework para que usara la localizacion actual del usuario, esta se actualiza cada 3 segundos y al darle el boton Empezar, se imprimira la localizacion en la pagina hasta que el usuario le de en el boton Parar
