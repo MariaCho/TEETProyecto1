@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+
+  app:
+    container_name: teetproyecto1
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports: 
+      - '80:3000'
