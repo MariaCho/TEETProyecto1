@@ -1,19 +1,15 @@
-version: "2"
+version: '3.5'
+
 services:
-  nginx:
-    container_name: nginx-server
-    image: nginx
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./ssl:/etc/nginx/ssl
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - nodeapp
-  nodeapp:
-    container_name: nodeapp
+
+  app:
+    container_name: teetproyecto1
     restart: always
-    build: .
-    ports:
-      - "3000:3000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports: 
+      - '80:3000'
