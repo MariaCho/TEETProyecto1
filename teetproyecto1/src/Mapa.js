@@ -100,7 +100,7 @@ class Mapa extends Component {
           </label>
         </header>
         <Map google={google} initialCenter={userLocation} zoom={18} style={style}>
-          <Marker name={'Current location'} />
+          <Marker name={'Current location'} position={userLocation} />
         </Map>
       </div>
     );
