@@ -29,7 +29,7 @@ class App extends Component {
       }
     });
   }
-
+  
   render() {  
     return (
       <div>{this.state.user? ( <Mapa/>) : (<LoginBox />)}</div>

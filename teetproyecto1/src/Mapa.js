@@ -13,7 +13,8 @@ class Mapa extends Component {
         lng: 0
       },
       loading: true,
-      aux: null
+      aux: null,
+      i: 0
     }
     this.logout = this.logout.bind(this);
   }
@@ -42,6 +43,10 @@ class Mapa extends Component {
     }
   }
 
+  componentWillUnmount(){
+    clearInterval(this.componentDidMount)
+  }
+
   renderPosition(position) {
     return { lat: position.coords.latitude, lng: position.coords.longitude };
   }
@@ -68,7 +73,22 @@ class Mapa extends Component {
   stop(){
     clearInterval(this.state.aux);
     const dataaux = JSON.stringify(this.state.userLocationData);
+    const db = fire.firestore();
+    const id = 'Ruta' + this.state.i;
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    db.collection('usuarios').doc(fire.auth().currentUser.uid).collection('Rutas').doc(id).set({
+      Ruta: dataaux
+    })
+    this.setState({
+      userLocationData: []
+    });
     console.log(dataaux);
+    console.log(fire.auth().currentUser.uid);
+    this.setState({
+      i: this.state.i + 1
+    });
   }
 
   render() {
