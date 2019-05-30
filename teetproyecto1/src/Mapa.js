@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Table, Button } from 'reactstrap'
 import './Map.css'
 import fire from './config/Fire';
 
 class Mapa extends Component {
+  
   constructor(props){
     super(props)
     this.state = {
@@ -14,12 +16,14 @@ class Mapa extends Component {
       },
       loading: true,
       aux: null,
+      rutas:[],
       i: 0
     }
     this.logout = this.logout.bind(this);
   }
 
   async componentDidMount() {
+    
     try{
       setInterval(async () => {
         navigator.geolocation.getCurrentPosition(
@@ -38,6 +42,7 @@ class Mapa extends Component {
         //const data = JSON.stringify(this.state);
         //console.log(data);
       }, 3000);
+      const db1 = fire.firestore();
     } catch(e){
       console.log(e);
     }
@@ -89,10 +94,28 @@ class Mapa extends Component {
     this.setState({
       i: this.state.i + 1
     });
+    
+  }
+
+  getRoute() {
+    console.log("Getting route")
+    const db1 = fire.firestore();
+    db1.collection('usuarios').doc(fire.auth().currentUser.uid).collection('Rutas').get().then((snapShots) => {
+      this.setState({
+        rutas: snapShots.docs.map( doc => {
+          return {id:doc.id, data: doc.data()}
+        })
+      })
+
+    }, error => {
+      console.log(error)
+    });
+
   }
 
   render() {
-    const { loading, userLocation } = this.state;
+
+    const { loading, userLocation, rutas } = this.state;
     const { google } = this.props;
     const style = {
       width: '100%',
@@ -114,14 +137,38 @@ class Mapa extends Component {
           <p>
             <button type="button" className="Map-logout-btn" onClick={this.stop.bind(this)}>Parar</button>
           </p>
+          <p>
+            <button type="button" className="Map-logout-btn" onClick={this.getRoute.bind(this)}>Actualizar Rutas</button>
+          </p>
           <label>
             Ruta
             {JSON.stringify(this.state.userLocationData)}
           </label>
         </header>
-        <Map google={google} initialCenter={userLocation} zoom={18} style={style}>
-          <Marker name={'Current location'} position={userLocation} />
-        </Map>
+
+          <h2>
+              Mis Rutas
+            </h2>
+
+            <Table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Rutas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rutas && rutas !== undefined ? rutas.map((ruta,key) =>(
+                  <tr key = {key}>
+                    <td>{ruta.id}</td>
+                    <td>{ruta.data.Ruta}</td>
+                  </tr>
+                )): null }
+              </tbody>
+            </Table>
+            <Map google={google} initialCenter={userLocation} zoom={18} style={style}>
+              <Marker name={'Current location'} position={userLocation} />
+            </Map>
       </div>
     );
   }
